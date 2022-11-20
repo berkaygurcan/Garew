@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image,  } from 'react-native'
-const WindowsIcon = require("../Images/platformLogo/windows.svg") as string;
+import Icons from '../Themes/Images'
 
 const Card = () => {
   
@@ -12,14 +12,14 @@ const Card = () => {
           uri: 'https://images.unsplash.com/photo-1661961112951-f2bfd1f253ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80',
         }}
       />
-
-     
       <View style = {styles.cardInfo}>
-      <Text style = {styles.text}> Game name </Text>
       <View style = {styles.platformIconsContainer}>
-      
- 
+        <Icons.WindowsIcon style = {styles.icon} />
+        <Icons.PlaystationIcon  style = {styles.icon} />
+        <Icons.XboxIcon  style = {styles.icon} />
+
       </View>
+      <Text style = {styles.text}> Game name </Text>
       </View>
     </View>
   )
@@ -54,8 +54,15 @@ const styles = StyleSheet.create({
     fontWeight: "600",
    },
    platformIconsContainer: {
-
+    display: "flex",
+    flexDirection:"row",
    },
+   icon: {
+    height:13,
+    width:17,
+    marginRight:5,
+    marginBottom:5,
+   }
 });
 
 export default Card
