@@ -4,17 +4,17 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: 'https://api.rawg.io/api/',
-  timeout: 1000,
 });
 
 // Add api key
 axios.defaults.params = {}
-axios.defaults.params['key'] = "251d06632eda4802b3d5e9310534d9d9";
+axios.defaults.params['key'] = "0b84130acd8d439fa79135603e8e2afc";
 
 
 async function getGames() {
     //per page , 20 item
     const response =  await api.get('games').then(res => {
+        console.log("response", res)
         return res
     }).catch(error => {
         console.log(error)

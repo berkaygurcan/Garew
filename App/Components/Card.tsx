@@ -1,6 +1,10 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image,  } from 'react-native'
+import MetaScoreRectangle from './MetaScoreRectangle'
 import Icons from '../Themes/Images'
+import CardInformation from './CardInformation'
+
+
 
 const Card = () => {
   
@@ -13,14 +17,20 @@ const Card = () => {
         }}
       />
       <View style = {styles.cardInfo}>
-      <View style = {styles.platformIconsContainer}>
-        <Icons.WindowsIcon style = {styles.icon} />
-        <Icons.PlaystationIcon  style = {styles.icon} />
-        <Icons.XboxIcon  style = {styles.icon} />
-
-      </View>
-      <Text style = {styles.text}> Game name </Text>
-      </View>
+        <View style = {styles.platformScoreContainer}>
+          <View style = {styles.platformIconsContainer}>
+            <Icons.WindowsIcon style = {styles.icon} />
+            <Icons.PlaystationIcon  style = {styles.icon} />
+            <Icons.XboxIcon  style = {styles.icon} />
+          </View>
+          <View>
+          <MetaScoreRectangle score='12'/>
+          </View>
+        </View>
+       
+        <Text style = {styles.text}> Game name </Text>
+        {/* <CardInformation /> */}
+        </View>
     </View>
   )
 }
@@ -30,7 +40,7 @@ const styles = StyleSheet.create({
   cardContainer: {
    flex: 1,
    width: 315,
-   maxHeight: 496,
+   height: 496,
    borderRadius: 20,
    backgroundColor: "#3B3B3B",
   },
@@ -56,6 +66,11 @@ const styles = StyleSheet.create({
    platformIconsContainer: {
     display: "flex",
     flexDirection:"row",
+   },
+   platformScoreContainer: {
+    flexDirection:'row',
+    justifyContent:"space-between",
+    alignItems:"center"
    },
    icon: {
     height:13,
