@@ -2,14 +2,29 @@ import React from 'react'
 import { View,Text, StyleSheet } from 'react-native'
 
 interface MetaScoreReactangle {
-    score: string;
+    score: number;
 }
 
 const MetaScoreRectangle: React.FC<MetaScoreReactangle> = ({score}) => {
-    //renkde metascora stillere ek olarak eklenecek
+    const colorStyle = {borderColor : "" , color: ""}
+    switch (true) {
+      case score >= 75 :
+        colorStyle.borderColor = "green"
+        colorStyle.color = "green"
+        break;
+      case score >= 50 && score < 75:
+        colorStyle.borderColor = "yellow"
+        colorStyle.color = "yellow"
+        break;
+      case score > 0 && score < 50:
+        colorStyle.borderColor = "red"
+        colorStyle.color = "red"
+        break;
+    }    
+    console.log(colorStyle)
   return (
-    <View style = {styles.rectangle}>
-        <Text style = {styles.metaScore}>{score}</Text>
+    <View style = {[styles.rectangle, colorStyle ]}>
+        <Text style = {[styles.metaScore, colorStyle]}>{score}</Text>
     </View>
   )
 }

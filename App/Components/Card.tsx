@@ -2,33 +2,33 @@ import React from 'react'
 import { View, Text, StyleSheet, Image,  } from 'react-native'
 import MetaScoreRectangle from './MetaScoreRectangle'
 import Icons from '../Themes/Images'
-import CardInformation from './CardInformation'
+import { Result } from '../Types/global'
+import { getPlatformIcon } from '../Utilities/Helpers'
 
+// type CardItem = {item: Result}
 
-
-const Card = () => {
-  
+const Card: React.FC<{item: Result}> = ({item}) => {
   return (
     <View style = {styles.cardContainer}>
       <Image
         style={styles.image}
         source={{
-          uri: 'https://images.unsplash.com/photo-1661961112951-f2bfd1f253ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80',
+          uri: item.background_image,
         }}
       />
       <View style = {styles.cardInfo}>
         <View style = {styles.platformScoreContainer}>
           <View style = {styles.platformIconsContainer}>
-            <Icons.WindowsIcon style = {styles.icon} />
-            <Icons.PlaystationIcon  style = {styles.icon} />
-            <Icons.XboxIcon  style = {styles.icon} />
+            {item.parent_platforms.map((p) => (
+              getPlatformIcon(p.platform.slug)
+            ))}
           </View>
           <View>
-          <MetaScoreRectangle score='12'/>
+          <MetaScoreRectangle score= {item.metacritic}/>
           </View>
         </View>
-       
-        <Text style = {styles.text}> Game name </Text>
+        
+        <Text style = {styles.text}> {item.name} </Text>
         {/* <CardInformation /> */}
         </View>
     </View>

@@ -1,6 +1,5 @@
 
-
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -8,28 +7,31 @@ import {
 } from 'react-native';
 import Card from './Components/Card';
 import {getGames} from './services'
-
-
- function initServices() {
-  getGames()
-}
+import { Result } from './Types/global';
 
 const App = () => {
-  const DATA = [
-    {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-      title: 'First Item',
-    },
 
-  ];
+  const [games, setGames] = useState<Result[]>();
+
+  useEffect(() => {
+    setTimeout(() => {
+      initServices()
+    },200)
+  },[])
+
+ async function initServices() {
+  const data = await getGames()
+  setGames(data)
+}
+
   return (
     <SafeAreaView style = {styles.mainContainer}>
      <FlatList
          showsVerticalScrollIndicator={false}
-         data={DATA}
+         data={games}
          style = {{flex: 1}}
          renderItem={({ item }) => (
-            <Card />
+            <Card item = {item} />
           )}
          keyExtractor={(_, index) => index.toString()}
             />
