@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Result } from "../Types/global";
-
+import { REACT_APP_KEY } from "../Utilities/AppConfig";
 
 // Create general api instance
 
@@ -11,7 +11,7 @@ const api = axios.create({
 
 // Add api key
 axios.defaults.params = {}
-axios.defaults.params['key'] = "0b84130acd8d439fa79135603e8e2afc";
+axios.defaults.params['key'] = REACT_APP_KEY;
 
 async function getGames() {
     //per page , 20 item
