@@ -6,7 +6,7 @@ import { REACT_APP_KEY } from "../Utilities/AppConfig";
 
 const api = axios.create({
   baseURL: 'https://api.rawg.io/api/',
-  timeout: 400,
+  timeout: 500,
 });
 
 // Add api key

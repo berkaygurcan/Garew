@@ -13,9 +13,7 @@ import { Result } from './Types/global';
 const App = () => {
   const [games, setGames] = useState<Result[]>();
   useEffect(() => {
-    setTimeout(() => {
       initServices()
-    },1000)
   },[])
 
  async function initServices() {

@@ -9,6 +9,7 @@ import CardInformation from './CardInformation'
 // type CardItem = {item: Result}
 
 const Card: React.FC<{item: Result}> = ({item}) => {
+  console.log(item)
   const cardInformationData = [
     {
       title: "Release Date",
@@ -16,8 +17,12 @@ const Card: React.FC<{item: Result}> = ({item}) => {
     },
     {
       title: "Genres",
-      relatedInformation: item.genres.map((g) => ` ,${g.name}` )
-    }
+      relatedInformation: item.genres.map((g,i) => {
+        if(i===item.genres.length-1)
+        return `${g.name}`
+       return `${g.name}, `
+      } )
+    },
   ]
   console.log(item)
   return (
@@ -53,6 +58,7 @@ const styles = StyleSheet.create({
    width: 315,
    height: 496,
    borderRadius: 20,
+   marginVertical:15,
    backgroundColor: Colors.common.cardBgColor,
   },
    image: {

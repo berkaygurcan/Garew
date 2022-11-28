@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text,StyleSheet} from 'react-native'
 import { Colors } from '../Themes/Colors'
+import Divider from './Divider'
 
 
 interface CardInformation {
@@ -13,11 +14,13 @@ const CardInformation: React.FC <{cardInformations: CardInformation[]}>= ({cardI
   return (
     <View style = {styles.container}>
       {cardInformations.map(info => (
+        <View style = {{flex:1}}>
         <View style = {styles.gameCardAboutItem}>
         <Text style = {styles.title}>{info.title + ":"}</Text>
         <Text style = {styles.relatedInformation}>{info.relatedInformation}</Text>
         </View>
-        //divider da eklenicek 
+       <Divider />
+        </View>
       ))}
     </View>
   )
@@ -36,12 +39,9 @@ const styles = StyleSheet.create({
     },
     title: {
       color:Colors.common.grey,
-      fontSize:12,
     },
     relatedInformation: {
       color:Colors.common.white,
-
-
     }
   });
   
