@@ -1,13 +1,25 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image,  } from 'react-native'
 import MetaScoreRectangle from './MetaScoreRectangle'
-import Icons from '../Themes/Images'
 import { Result } from '../Types/global'
 import { getPlatformIcon } from '../Utilities/Helpers'
+import { Colors } from '../Themes/Colors'
+import CardInformation from './CardInformation'
 
 // type CardItem = {item: Result}
 
 const Card: React.FC<{item: Result}> = ({item}) => {
+  const cardInformationData = [
+    {
+      title: "Release Date",
+      relatedInformation: item.released
+    },
+    {
+      title: "Genres",
+      relatedInformation: item.genres.map((g) => ` ,${g.name}` )
+    }
+  ]
+  console.log(item)
   return (
     <View style = {styles.cardContainer}>
       <Image
@@ -27,9 +39,8 @@ const Card: React.FC<{item: Result}> = ({item}) => {
           <MetaScoreRectangle score= {item.metacritic}/>
           </View>
         </View>
-        
         <Text style = {styles.text}> {item.name} </Text>
-        {/* <CardInformation /> */}
+        <CardInformation cardInformations = {cardInformationData}/>
         </View>
     </View>
   )
@@ -42,7 +53,7 @@ const styles = StyleSheet.create({
    width: 315,
    height: 496,
    borderRadius: 20,
-   backgroundColor: "#3B3B3B",
+   backgroundColor: Colors.common.cardBgColor,
   },
    image: {
     width: 315,
@@ -60,7 +71,8 @@ const styles = StyleSheet.create({
    text: {
     type: 'Regular',
     fontSize:22,
-    color: 'white',
+    marginVertical:8,
+    color: Colors.common.white,
     fontWeight: "600",
    },
    platformIconsContainer: {

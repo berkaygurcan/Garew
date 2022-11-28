@@ -6,17 +6,16 @@ import {
   FlatList,
 } from 'react-native';
 import Card from './Components/Card';
+import { Colors } from './Themes/Colors';
 import {getGames} from './services'
 import { Result } from './Types/global';
 
 const App = () => {
-
   const [games, setGames] = useState<Result[]>();
-
   useEffect(() => {
     setTimeout(() => {
       initServices()
-    },200)
+    },1000)
   },[])
 
  async function initServices() {
@@ -38,9 +37,9 @@ const App = () => {
     </SafeAreaView>
   );
 };
-
 const styles = StyleSheet.create({
-  mainContainer: {flex: 1, alignItems: 'center', justifyContent: "center" , backgroundColor:"#2B2B2B"}
+  mainContainer: {flex: 1, alignItems: 'center', justifyContent: "center" , backgroundColor: Colors.common.bgColor}
 });
+
 
 export default App;

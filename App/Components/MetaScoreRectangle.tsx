@@ -1,5 +1,6 @@
 import React from 'react'
 import { View,Text, StyleSheet } from 'react-native'
+import { Colors } from '../Themes/Colors';
 
 interface MetaScoreReactangle {
     score: number;
@@ -9,19 +10,18 @@ const MetaScoreRectangle: React.FC<MetaScoreReactangle> = ({score}) => {
     const colorStyle = {borderColor : "" , color: ""}
     switch (true) {
       case score >= 75 :
-        colorStyle.borderColor = "green"
-        colorStyle.color = "green"
+        colorStyle.borderColor = Colors.metascore.good
+        colorStyle.color = Colors.metascore.good
         break;
       case score >= 50 && score < 75:
-        colorStyle.borderColor = "yellow"
-        colorStyle.color = "yellow"
+        colorStyle.borderColor = Colors.metascore.normal
+        colorStyle.color = Colors.metascore.normal
         break;
       case score > 0 && score < 50:
-        colorStyle.borderColor = "red"
-        colorStyle.color = "red"
+        colorStyle.borderColor = Colors.metascore.bad
+        colorStyle.color = Colors.metascore.bad
         break;
     }    
-    console.log(colorStyle)
   return (
     <View style = {[styles.rectangle, colorStyle ]}>
         <Text style = {[styles.metaScore, colorStyle]}>{score}</Text>

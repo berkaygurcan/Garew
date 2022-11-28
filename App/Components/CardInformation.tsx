@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text,StyleSheet} from 'react-native'
+import { Colors } from '../Themes/Colors'
 
 
 interface CardInformation {
@@ -8,13 +9,13 @@ interface CardInformation {
 }
 
 
-const CardInformation: React.FC <CardInformation[]>= (cardInformations) => {
+const CardInformation: React.FC <{cardInformations: CardInformation[]}>= ({cardInformations}) => {
   return (
     <View style = {styles.container}>
       {cardInformations.map(info => (
         <View style = {styles.gameCardAboutItem}>
-        <Text>{info.title}</Text>
-        <Text>{info.relatedInformation}</Text>
+        <Text style = {styles.title}>{info.title + ":"}</Text>
+        <Text style = {styles.relatedInformation}>{info.relatedInformation}</Text>
         </View>
         //divider da eklenicek 
       ))}
@@ -25,15 +26,23 @@ const styles = StyleSheet.create({
 
     container: {
      flex: 1,
-     flexDirection:"row",
+     justifyContent:"flex-start",
      margin:4,
     },
     gameCardAboutItem: {
-        flex:1,
         paddingBottom:12,
         justifyContent:"space-between",
         flexDirection:"row"
     },
+    title: {
+      color:Colors.common.grey,
+      fontSize:12,
+    },
+    relatedInformation: {
+      color:Colors.common.white,
+
+
+    }
   });
   
 
