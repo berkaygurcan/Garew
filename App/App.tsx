@@ -1,43 +1,13 @@
-
-import React, { useEffect, useState } from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  FlatList,
-} from 'react-native';
-import Card from './Components/Card';
-import { Colors } from './Themes/Colors';
-import {getGames} from './services'
-import { Result } from './Types/global';
+import { NavigationContainer } from '@react-navigation/native'
+import React from 'react'
+import Tabs from './Navigation/Tabs'
 
 const App = () => {
-  const [games, setGames] = useState<Result[]>();
-  useEffect(() => {
-      initServices()
-  },[])
-
- async function initServices() {
-  const data = await getGames()
-  setGames(data)
+  return (
+    <NavigationContainer>
+      <Tabs />
+    </NavigationContainer>
+  )
 }
 
-  return (
-    <SafeAreaView style = {styles.mainContainer}>
-     <FlatList
-         showsVerticalScrollIndicator={false}
-         data={games}
-         style = {{flex: 1}}
-         renderItem={({ item }) => (
-            <Card item = {item} />
-          )}
-         keyExtractor={(_, index) => index.toString()}
-            />
-    </SafeAreaView>
-  );
-};
-const styles = StyleSheet.create({
-  mainContainer: {flex: 1, alignItems: 'center', justifyContent: "center" , backgroundColor: Colors.common.bgColor}
-});
-
-
-export default App;
+export default App

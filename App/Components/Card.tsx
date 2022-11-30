@@ -6,7 +6,6 @@ import { getPlatformIcon } from '../Utilities/Helpers'
 import { Colors } from '../Themes/Colors'
 import CardInformation from './CardInformation'
 
-// type CardItem = {item: Result}
 
 const Card: React.FC<{item: Result}> = ({item}) => {
   console.log(item)

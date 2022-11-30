@@ -3,12 +3,10 @@ import { View, Text,StyleSheet} from 'react-native'
 import { Colors } from '../Themes/Colors'
 import Divider from './Divider'
 
-
 interface CardInformation {
   title: string,
-  relatedInformation: any //düzenlenicek union tipe göre
+  relatedInformation: string | string[] //düzenlenicek union tipe göre
 }
-
 
 const CardInformation: React.FC <{cardInformations: CardInformation[]}>= ({cardInformations}) => {
   return (
@@ -25,6 +23,7 @@ const CardInformation: React.FC <{cardInformations: CardInformation[]}>= ({cardI
     </View>
   )
 }
+
 const styles = StyleSheet.create({
 
     container: {
