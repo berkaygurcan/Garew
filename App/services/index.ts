@@ -4,9 +4,11 @@ import { REACT_APP_KEY } from "../Utilities/AppConfig";
 
 // Create general api instance
 
-async function getGames() {
+async function getGames(url: string = "") {
     //per page , 20 item
-    const data: Data = await axios.get('https://api.rawg.io/api/games',{params: {key: REACT_APP_KEY}}).then(res => {
+    //if url doesnt exist this means first fetch
+
+    const data: Data = await axios.get(!url ? 'https://api.rawg.io/api/games' : url,{params: !url && {key: REACT_APP_KEY}}).then(res => {
         console.log(res.data)
         return res.data
     }).catch(error => {
@@ -14,7 +16,6 @@ async function getGames() {
     })
     return data
 }
-
 
 export {getGames}
 
