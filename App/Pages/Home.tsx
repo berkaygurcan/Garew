@@ -18,7 +18,7 @@ const Home = () => {
 
  async function initServices() {
   const data = await getGames()
-  setGames(data)
+  setGames(data.results)
 }
 
   return (

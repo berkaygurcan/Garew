@@ -8,7 +8,6 @@ import CardInformation from './CardInformation'
 
 
 const Card: React.FC<{item: Result}> = ({item}) => {
-  console.log(item)
   const cardInformationData = [
     {
       title: "Release Date",
@@ -23,7 +22,6 @@ const Card: React.FC<{item: Result}> = ({item}) => {
       } )
     },
   ]
-  console.log(item)
   return (
     <View style = {styles.cardContainer}>
       <Image
