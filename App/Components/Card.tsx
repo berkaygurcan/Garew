@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, Image,  } from 'react-native'
+import { View, Text, StyleSheet, Image, TouchableOpacity,  } from 'react-native'
 import MetaScoreRectangle from './MetaScoreRectangle'
 import { Result } from '../Types/global'
 import { getPlatformIcon } from '../Utilities/Helpers'
@@ -22,6 +22,10 @@ const Card: React.FC<{item: Result}> = ({item}) => {
       } )
     },
   ]
+
+  const handlePress = () => {
+    console.log("basıldı")
+  }
   return (
     <View style = {styles.cardContainer}>
       <Image
@@ -38,10 +42,12 @@ const Card: React.FC<{item: Result}> = ({item}) => {
             ))}
           </View>
           <View>
-          <MetaScoreRectangle score= {item.metacritic}/>
+            <MetaScoreRectangle score= {item.metacritic}/>
           </View>
         </View>
-        <Text style = {styles.text}> {item.name} </Text>
+        <TouchableOpacity onPress={handlePress}>
+          <Text style = {styles.text}> {item.name} </Text>
+        </TouchableOpacity>
         <CardInformation cardInformations = {cardInformationData}/>
         </View>
     </View>
