@@ -6,8 +6,8 @@ import { getPlatformIcon } from '../Utilities/Helpers'
 import { Colors } from '../Themes/Colors'
 import CardInformation from './CardInformation'
 
-
-const Card: React.FC<{item: Result}> = ({item}) => {
+const Card: React.FC<{item: Result,navigation : any}> = ({item,navigation}) => {
+  //console.log("item",item)
   const cardInformationData = [
     {
       title: "Release Date",
@@ -24,7 +24,7 @@ const Card: React.FC<{item: Result}> = ({item}) => {
   ]
 
   const handlePress = () => {
-    console.log("basıldı")
+    navigation.navigate("GameDetail");
   }
   return (
     <View style = {styles.cardContainer}>
