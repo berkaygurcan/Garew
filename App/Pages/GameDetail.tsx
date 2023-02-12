@@ -1,11 +1,13 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React from 'react';
+import {View, Text} from 'react-native';
 
-const GameDetail = (props:any) => {
+const GameDetail = () => {
   //console.log(props)
   return (
-    <View><Text>GameDetail</Text></View>
-  )
-}
+    <View>
+      <Text>GameDetail</Text>
+    </View>
+  );
+};
 
-export default GameDetail
+export default GameDetail;
