@@ -20,11 +20,22 @@ const Home = ({navigation}: HomeTabScreenProps<'Home'>) => {
   const [loading, setLoading] = useState(false);
 
   const [openDrowdown, setOpenDropdown] = useState(false);
-  const [dropDownFilter, setDropDownFilter] = useState(0);
+  const [dropDownOrder, setDropDownOrder] = useState(0);
+
   useEffect(() => {
     initServices();
   }, []);
 
+  useEffect(() => {
+    getOrderedGames();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dropDownOrder]);
+
+  async function getOrderedGames() {
+    const data = await getGames('', dropDownData[dropDownOrder].order);
+    setNextPageUrl(data.next);
+    setGames(data.results);
+  }
   async function initServices() {
     const data = await getGames();
     setNextPageUrl(data.next);
@@ -41,12 +52,12 @@ const Home = ({navigation}: HomeTabScreenProps<'Home'>) => {
 
   //bunlar taşınacak
   const dropDownData = [
-    'Relevance',
-    'Date added',
-    'Name',
-    'Release date',
-    'Popularity',
-    'Average rating',
+    {name: 'Relevance', order: 'metacritic'},
+    {name: 'Date added', order: 'added'},
+    {name: 'Name', order: 'name'},
+    {name: 'Release date', order: 'released'},
+    {name: 'Popularity', order: ''},
+    {name: 'Average rating', order: 'rating'},
   ];
 
   const renderFooter = () => {
@@ -60,7 +71,7 @@ const Home = ({navigation}: HomeTabScreenProps<'Home'>) => {
   };
 
   const handleItemOnPress = (index: any) => {
-    setDropDownFilter(index);
+    setDropDownOrder(index);
     setOpenDropdown(false);
   };
 
@@ -73,9 +84,9 @@ const Home = ({navigation}: HomeTabScreenProps<'Home'>) => {
           style={[
             styles.dropdownItemTextStyle,
             // eslint-disable-next-line react-native/no-inline-styles
-            index === dropDownFilter && {color: 'yellow'},
+            index === dropDownOrder && {color: 'yellow'},
           ]}>
-          {item}
+          {item.name}
         </Text>
       </TouchableOpacity>
     );
@@ -90,7 +101,7 @@ const Home = ({navigation}: HomeTabScreenProps<'Home'>) => {
           <Text
             style={
               styles.dropdownTextStyle
-            }>{`Order By: ${dropDownData[dropDownFilter]} >`}</Text>
+            }>{`Order By: ${dropDownData[dropDownOrder].name} >`}</Text>
         </TouchableOpacity>
 
         {openDrowdown && (
@@ -137,6 +148,8 @@ const styles = StyleSheet.create({
     display: 'flex',
   },
   dropdownContainer: {
+    backgroundColor: Colors.common.cardBgColor,
+    borderRadius: 8,
     marginVertical: 8,
     justifyContent: 'center',
     alignItems: 'center',
