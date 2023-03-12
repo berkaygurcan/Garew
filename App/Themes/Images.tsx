@@ -7,6 +7,9 @@ import PlaystationIcon from '../Images/platformLogo/playstation.svg';
 import XboxIcon from '../Images/platformLogo/xbox.svg';
 import WebIcon from '../Images/platformLogo/web.svg';
 
+// Menu Icons (component olarak düzenlenecek)
+import HomeIcon from '../Images/menuLogo/home.svg';
+
 const Icons = {
   WindowsIcon,
   AppleIcon,
@@ -15,6 +18,7 @@ const Icons = {
   PlaystationIcon,
   XboxIcon,
   WebIcon,
+  HomeIcon,
 };
 
 export default Icons;

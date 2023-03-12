@@ -1,4 +1,4 @@
-import { createStackNavigator } from '@react-navigation/stack';
+import {createStackNavigator} from '@react-navigation/stack';
 import GameDetail from '../Pages/GameDetail';
 import Tabs from './Tabs';
 
@@ -14,4 +14,4 @@ function Stacks() {
   );
 }
 
-export default Stacks
+export default Stacks;
