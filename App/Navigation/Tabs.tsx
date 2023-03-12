@@ -12,8 +12,8 @@ function Tabs() {
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
-        tabBarActiveTintColor: Colors.tabBar.barActiveTintColor,
-        tabBarInactiveTintColor: Colors.tabBar.barInactiveTintColor,
+        // tabBarActiveTintColor: Colors.tabBar.barActiveTintColor,
+        // tabBarInactiveTintColor: Colors.tabBar.barInactiveTintColor,
         tabBarStyle: [styles.tabBarStyle],
         tabBarIconStyle: [styles.tabBarIconStyle],
       }}>
@@ -22,7 +22,12 @@ function Tabs() {
         component={Home}
         options={{
           tabBarLabel: 'Home',
-          tabBarIcon: ({color, size}) => <Icons.HomeIcon />,
+          tabBarIcon: () => (
+            <Icons.HomeIcon
+              color={Colors.tabBar.barActiveTintColor}
+              size={25}
+            />
+          ),
         }}
       />
     </Tab.Navigator>

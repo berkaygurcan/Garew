@@ -7,8 +7,8 @@ import PlaystationIcon from '../Images/platformLogo/playstation.svg';
 import XboxIcon from '../Images/platformLogo/xbox.svg';
 import WebIcon from '../Images/platformLogo/web.svg';
 
-// Menu Icons (component olarak düzenlenecek)
-import HomeIcon from '../Images/menuLogo/home.svg';
+// Menu Icons
+import HomeIcon from '../Components/Svg/HomeIcon';
 
 const Icons = {
   WindowsIcon,
